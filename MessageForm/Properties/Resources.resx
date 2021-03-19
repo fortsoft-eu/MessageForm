@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonAbort" xml:space="preserve">
+    <value>Abort</value>
+  </data>
+  <data name="ButtonAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ButtonDisableThemes" xml:space="preserve">
+    <value>Disable Visual S&amp;tyles</value>
+  </data>
+  <data name="ButtonEnableThemes" xml:space="preserve">
+    <value>Enable Visual S&amp;tyles</value>
+  </data>
+  <data name="ButtonIgnore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonRetry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="ButtonSkip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="CaptionError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="CaptionInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="CaptionWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="DummyText" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</value>
+  </data>
+  <data name="MenuItemAbout" xml:space="preserve">
+    <value>&amp;About...</value>
+  </data>
+  <data name="MenuItemCheckForUpdates" xml:space="preserve">
+    <value>Check for &amp;Updates...</value>
+  </data>
+  <data name="MenuItemCopy" xml:space="preserve">
+    <value>&amp;Copy</value>
+  </data>
+  <data name="MenuItemEdit" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="MenuItemExit" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="MenuItemFile" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MenuItemHelp" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuItemExportBasic" xml:space="preserve">
+    <value>&amp;Snapshot Export (Basic Theme)...</value>
+  </data>
+  <data name="MenuItemOnlineHelp" xml:space="preserve">
+    <value>Online &amp;Help</value>
+  </data>
+  <data name="MenuItemOptions" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="MenuItemExport" xml:space="preserve">
+    <value>Snapshot &amp;Export...</value>
+  </data>
+  <data name="MenuItemView" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="MessageApplicationCannotRun" xml:space="preserve">
+    <value>This applicacion cannot run on your system.</value>
+  </data>
+  <data name="MessageApplicationError" xml:space="preserve">
+    <value>An unexpected error has occured. Application will close now.</value>
+  </data>
+  <data name="MessageConnecting" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="MessageReady" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="MessageUpdateAvailable" xml:space="preserve">
+    <value>An update is available.</value>
+  </data>
+  <data name="MessageUpdateCheckError" xml:space="preserve">
+    <value>Error checking for updates. Please try again later.</value>
+  </data>
+  <data name="MessageUpToDate" xml:space="preserve">
+    <value>Application is up to date.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="OK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\OK.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShieldError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ShieldError.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShieldWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ShieldWarning.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>https://fortsoft.eu/</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Test application for testing the MessageForm class.</value>
+  </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuItemCopyAbout" xml:space="preserve">
+    <value>Copy &amp;About Text</value>
+  </data>
+  <data name="MenuItemCopyLink" xml:space="preserve">
+    <value>&amp;Copy Link</value>
+  </data>
+  <data name="DummyCaption" xml:space="preserve">
+    <value>Dummy Caption</value>
+  </data>
+  <data name="CaptionCapsLock" xml:space="preserve">
+    <value>CAPS</value>
+  </data>
+  <data name="CaptionInsert" xml:space="preserve">
+    <value>INS</value>
+  </data>
+  <data name="CaptionNumLock" xml:space="preserve">
+    <value>NUM</value>
+  </data>
+  <data name="CaptionOverWrite" xml:space="preserve">
+    <value>OVR</value>
+  </data>
+  <data name="CaptionScrollLock" xml:space="preserve">
+    <value>SCRL</value>
+  </data>
+  <data name="CaptionUpdateCheck" xml:space="preserve">
+    <value>Update Check</value>
+  </data>
+  <data name="LabelAvailableVersion" xml:space="preserve">
+    <value>Available version:</value>
+  </data>
+  <data name="LabelThisVersion" xml:space="preserve">
+    <value>This version:</value>
+  </data>
+  <data name="MenuItemCopyVersion" xml:space="preserve">
+    <value>&amp;Copy Version</value>
+  </data>
+  <data name="MessageInvalidResponse" xml:space="preserve">
+    <value>Invalid server response</value>
+  </data>
+  <data name="Warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Warning.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LabelClickedButton" xml:space="preserve">
+    <value>ClickedButton:</value>
+  </data>
+  <data name="LabelDialogResult" xml:space="preserve">
+    <value>DialogResult:</value>
+  </data>
+  <data name="MenuItemPreferences" xml:space="preserve">
+    <value>&amp;Preferences...</value>
+  </data>
+  <data name="MessageHelpButtonClicked" xml:space="preserve">
+    <value>Help button clicked</value>
+  </data>
+  <data name="MessageHelpRequested" xml:space="preserve">
+    <value>Help requested</value>
+  </data>
+  <data name="MessagePreferencesSaved" xml:space="preserve">
+    <value>Preferences saved</value>
+  </data>
+  <data name="MessagePreviewGenerated" xml:space="preserve">
+    <value>Preview generated</value>
+  </data>
+  <data name="MessagePrinting" xml:space="preserve">
+    <value>Printing...</value>
+  </data>
+  <data name="MessagePrintingFinished" xml:space="preserve">
+    <value>Printing finished</value>
+  </data>
+  <data name="MenuItemApplicationReset" xml:space="preserve">
+    <value>Application &amp;Reset...</value>
+  </data>
+  <data name="MenuItemDisableThemes" xml:space="preserve">
+    <value>Disable &amp;Themes</value>
+  </data>
+  <data name="MenuItemEnableThemes" xml:space="preserve">
+    <value>Enable &amp;Themes</value>
+  </data>
+  <data name="MessageResetWarningLine1" xml:space="preserve">
+    <value>Are you sure to reset this application to it's default state?</value>
+  </data>
+  <data name="MessageResetWarningLine2" xml:space="preserve">
+    <value>All settings will be lost.</value>
+  </data>
+  <data name="CaptionExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="CaptionPrintOutput" xml:space="preserve">
+    <value>Print Output</value>
+  </data>
+  <data name="MenuItemPrint" xml:space="preserve">
+    <value>&amp;Print...</value>
+  </data>
+  <data name="MenuItemPrintPreview" xml:space="preserve">
+    <value>Print Pre&amp;view...</value>
+  </data>
+  <data name="MenuItemShowCode" xml:space="preserve">
+    <value>Show &amp;Code...</value>
+  </data>
+  <data name="MenuItemShowDialog" xml:space="preserve">
+    <value>Show &amp;Dialog...</value>
+  </data>
+  <data name="MessageExportCanceled" xml:space="preserve">
+    <value>Export canceled</value>
+  </data>
+  <data name="MessageExportFailed" xml:space="preserve">
+    <value>Export failed</value>
+  </data>
+  <data name="MessageExportFinished" xml:space="preserve">
+    <value>Export finished</value>
+  </data>
+  <data name="MessageExporting" xml:space="preserve">
+    <value>Exporting…</value>
+  </data>
+  <data name="MessageGeneratingPreview" xml:space="preserve">
+    <value>Generating preview...</value>
+  </data>
+  <data name="CaptionCodeForm" xml:space="preserve">
+    <value>C# Code</value>
+  </data>
+  <data name="MenuItemPrintBasic" xml:space="preserve">
+    <value>Print (&amp;Basic Theme)...</value>
+  </data>
+  <data name="MenuItemPrintPreviewBasic" xml:space="preserve">
+    <value>Print Previe&amp;w (Basic Theme)...</value>
+  </data>
+  <data name="MenuItemSelectAll" xml:space="preserve">
+    <value>Select &amp;All</value>
+  </data>
+  <data name="MenuItemWordWrap" xml:space="preserve">
+    <value>&amp;Word Wrap</value>
+  </data>
+  <data name="MenuItemDontWordWrap" xml:space="preserve">
+    <value>Don't &amp;Word Wrap</value>
+  </data>
+  <data name="MessagePrintingFailed" xml:space="preserve">
+    <value>Printing failed</value>
+  </data>
+  <data name="ShieldOK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ShieldOK.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShieldQuestion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ShieldQuestion.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShieldQuestionRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ShieldQuestionRed.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>Clos&amp;e</value>
+  </data>
+  <data name="CaptionHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ExceptionMessageM" xml:space="preserve">
+    <value>Arguments mismatch.</value>
+  </data>
+  <data name="ExceptionMessageU" xml:space="preserve">
+    <value>An unknown switch was provided.</value>
+  </data>
+  <data name="ExceptionMessageB" xml:space="preserve">
+    <value>Buttons index multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageC" xml:space="preserve">
+    <value>Caption multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageD" xml:space="preserve">
+    <value>Default button index multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageI" xml:space="preserve">
+    <value>Icon index multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageO" xml:space="preserve">
+    <value>Output file path multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageS" xml:space="preserve">
+    <value>Message text must be provided.</value>
+  </data>
+  <data name="ExceptionMessageT" xml:space="preserve">
+    <value>Message text multiple entry.</value>
+  </data>
+  <data name="ExceptionMessageW" xml:space="preserve">
+    <value>Message form maximum width multiple entry.</value>
+  </data>
+  <data name="CaptionAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="LabelVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="LabelWebsite" xml:space="preserve">
+    <value>Website:</value>
+  </data>
+  <data name="ToolTipVisit" xml:space="preserve">
+    <value>Visit website</value>
+  </data>
+  <data name="HelpLine1" xml:space="preserve">
+    <value>/c\tMessage form caption.</value>
+  </data>
+  <data name="HelpLine10" xml:space="preserve">
+    <value>/o\tOutput file full path.</value>
+  </data>
+  <data name="HelpLine2" xml:space="preserve">
+    <value>/t\tMessage text.</value>
+  </data>
+  <data name="HelpLine3" xml:space="preserve">
+    <value>/b\tButtons index.</value>
+  </data>
+  <data name="HelpLine4" xml:space="preserve">
+    <value>/i\tIcon index.</value>
+  </data>
+  <data name="HelpLine5" xml:space="preserve">
+    <value>/d\tDefault button index.</value>
+  </data>
+  <data name="HelpLine6" xml:space="preserve">
+    <value>/e\tDisplay help button.</value>
+  </data>
+  <data name="HelpLine7" xml:space="preserve">
+    <value>/m\tMaximum width in pixels.</value>
+  </data>
+  <data name="HelpLine8" xml:space="preserve">
+    <value>/w\tNo wrap.</value>
+  </data>
+  <data name="HelpLine9" xml:space="preserve">
+    <value>/s\tBasic theme.</value>
+  </data>
+  <data name="HelpLine11" xml:space="preserve">
+    <value>/T\tArgument parsing test.</value>
+  </data>
+  <data name="ButtonNoAll" xml:space="preserve">
+    <value>No To All</value>
+  </data>
+  <data name="ButtonYesAll" xml:space="preserve">
+    <value>Yes To All</value>
+  </data>
+  <data name="HelpLine12" xml:space="preserve">
+    <value>/h or /?\tWill show this help.</value>
+  </data>
+</root>

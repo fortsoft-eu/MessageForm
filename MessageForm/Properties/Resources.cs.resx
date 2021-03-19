@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ButtonAbort" xml:space="preserve">
+    <value>Přerušit</value>
+  </data>
+  <data name="ButtonAll" xml:space="preserve">
+    <value>Vše</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>&amp;Zavřít</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="ButtonDisableThemes" xml:space="preserve">
+    <value>Zakáza&amp;t vizuální styly</value>
+  </data>
+  <data name="ButtonEnableThemes" xml:space="preserve">
+    <value>Povoli&amp;t vizuální styly</value>
+  </data>
+  <data name="ButtonIgnore" xml:space="preserve">
+    <value>Ignorovat</value>
+  </data>
+  <data name="ButtonNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="ButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonRetry" xml:space="preserve">
+    <value>Opakovat</value>
+  </data>
+  <data name="ButtonSkip" xml:space="preserve">
+    <value>Přeskočit</value>
+  </data>
+  <data name="ButtonYes" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="CaptionCodeForm" xml:space="preserve">
+    <value>C# kód</value>
+  </data>
+  <data name="CaptionError" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="CaptionExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="CaptionInformation" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="CaptionPrintOutput" xml:space="preserve">
+    <value>Tiskový výstup</value>
+  </data>
+  <data name="CaptionUpdateCheck" xml:space="preserve">
+    <value>Kontrola aktualizací</value>
+  </data>
+  <data name="CaptionWarning" xml:space="preserve">
+    <value>Varování</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Testovací aplikace k testování třídy MessageForm.</value>
+  </data>
+  <data name="DummyCaption" xml:space="preserve">
+    <value>Záhlaví</value>
+  </data>
+  <data name="LabelAvailableVersion" xml:space="preserve">
+    <value>Dostupná verze:</value>
+  </data>
+  <data name="LabelThisVersion" xml:space="preserve">
+    <value>Tato verze:</value>
+  </data>
+  <data name="MenuItemAbout" xml:space="preserve">
+    <value>&amp;O aplikaci...</value>
+  </data>
+  <data name="MenuItemApplicationReset" xml:space="preserve">
+    <value>&amp;Reset aplikace</value>
+  </data>
+  <data name="MenuItemCheckForUpdates" xml:space="preserve">
+    <value>Zkontrolov&amp;at aktualizace...</value>
+  </data>
+  <data name="MenuItemCopy" xml:space="preserve">
+    <value>&amp;Kopírovat</value>
+  </data>
+  <data name="MenuItemCopyAbout" xml:space="preserve">
+    <value>Kopírovat text &amp;O aplikaci</value>
+  </data>
+  <data name="MenuItemCopyLink" xml:space="preserve">
+    <value>&amp;Kopírovat odkaz</value>
+  </data>
+  <data name="MenuItemCopyVersion" xml:space="preserve">
+    <value>&amp;Kopírovat verzi</value>
+  </data>
+  <data name="MenuItemDisableThemes" xml:space="preserve">
+    <value>Zakáza&amp;t vizuální styly</value>
+  </data>
+  <data name="MenuItemDontWordWrap" xml:space="preserve">
+    <value>Ne&amp;zalamovat řádky</value>
+  </data>
+  <data name="MenuItemEdit" xml:space="preserve">
+    <value>Úpr&amp;avy</value>
+  </data>
+  <data name="MenuItemEnableThemes" xml:space="preserve">
+    <value>Povoli&amp;t vizuální styly</value>
+  </data>
+  <data name="MenuItemExit" xml:space="preserve">
+    <value>&amp;Konec</value>
+  </data>
+  <data name="MenuItemExport" xml:space="preserve">
+    <value>&amp;Export...</value>
+  </data>
+  <data name="MenuItemExportBasic" xml:space="preserve">
+    <value>Ex&amp;port (základní téma)...</value>
+  </data>
+  <data name="MenuItemFile" xml:space="preserve">
+    <value>&amp;Soubor</value>
+  </data>
+  <data name="MenuItemHelp" xml:space="preserve">
+    <value>Nápo&amp;věda</value>
+  </data>
+  <data name="MenuItemOnlineHelp" xml:space="preserve">
+    <value>On-line nápo&amp;věda</value>
+  </data>
+  <data name="MenuItemOptions" xml:space="preserve">
+    <value>&amp;Nastavení</value>
+  </data>
+  <data name="MenuItemPreferences" xml:space="preserve">
+    <value>Před&amp;volby...</value>
+  </data>
+  <data name="MenuItemPrint" xml:space="preserve">
+    <value>&amp;Tisk...</value>
+  </data>
+  <data name="MenuItemPrintBasic" xml:space="preserve">
+    <value>Tisk (zákla&amp;dní téma)...</value>
+  </data>
+  <data name="MenuItemPrintPreview" xml:space="preserve">
+    <value>Ná&amp;hled tisku...</value>
+  </data>
+  <data name="MenuItemPrintPreviewBasic" xml:space="preserve">
+    <value>Náhled tisku (základní té&amp;ma)...</value>
+  </data>
+  <data name="MenuItemSelectAll" xml:space="preserve">
+    <value>Vybr&amp;at vše</value>
+  </data>
+  <data name="MenuItemShowCode" xml:space="preserve">
+    <value>Zobrazit &amp;kód...</value>
+  </data>
+  <data name="MenuItemShowDialog" xml:space="preserve">
+    <value>Zobrazit &amp;dialog...</value>
+  </data>
+  <data name="MenuItemView" xml:space="preserve">
+    <value>&amp;Zobrazení</value>
+  </data>
+  <data name="MenuItemWordWrap" xml:space="preserve">
+    <value>&amp;Zalamovat řádky</value>
+  </data>
+  <data name="MessageApplicationCannotRun" xml:space="preserve">
+    <value>Tato aplikace nemůže běžet na Vašem systému.</value>
+  </data>
+  <data name="MessageApplicationError" xml:space="preserve">
+    <value>Došlo k neočekávané chybě. Aplikace bude nyní ukončena.</value>
+  </data>
+  <data name="MessageConnecting" xml:space="preserve">
+    <value>Probíhá připojování...</value>
+  </data>
+  <data name="MessageExportCanceled" xml:space="preserve">
+    <value>Export byl zrušen</value>
+  </data>
+  <data name="MessageExportFailed" xml:space="preserve">
+    <value>Export selhal</value>
+  </data>
+  <data name="MessageExportFinished" xml:space="preserve">
+    <value>Export byl dokončen</value>
+  </data>
+  <data name="MessageExporting" xml:space="preserve">
+    <value>Probíhá export...</value>
+  </data>
+  <data name="MessageGeneratingPreview" xml:space="preserve">
+    <value>Probíhá generování náhledu...</value>
+  </data>
+  <data name="MessageHelpButtonClicked" xml:space="preserve">
+    <value>Bylo kliknuto na tlačítko nápovědy</value>
+  </data>
+  <data name="MessageHelpRequested" xml:space="preserve">
+    <value>Byla požadována nápověda</value>
+  </data>
+  <data name="MessageInvalidResponse" xml:space="preserve">
+    <value>Neplatná odpověď serveru</value>
+  </data>
+  <data name="MessagePreferencesSaved" xml:space="preserve">
+    <value>Předvolby byly uloženy</value>
+  </data>
+  <data name="MessagePreviewGenerated" xml:space="preserve">
+    <value>Náhled byl vygenerován</value>
+  </data>
+  <data name="MessagePrinting" xml:space="preserve">
+    <value>Probíhá tisk...</value>
+  </data>
+  <data name="MessagePrintingFailed" xml:space="preserve">
+    <value>Tisk selhal</value>
+  </data>
+  <data name="MessagePrintingFinished" xml:space="preserve">
+    <value>Tisk byl dokončen</value>
+  </data>
+  <data name="MessageReady" xml:space="preserve">
+    <value>Připraven</value>
+  </data>
+  <data name="MessageResetWarningLine1" xml:space="preserve">
+    <value>Opravdu chcete nastavit aplikaci do jejího výchozího nastavení?</value>
+  </data>
+  <data name="MessageResetWarningLine2" xml:space="preserve">
+    <value>Veškeré předvolby budou ztraceny.</value>
+  </data>
+  <data name="MessageUpdateAvailable" xml:space="preserve">
+    <value>Je k dispozici aktualizace.</value>
+  </data>
+  <data name="MessageUpdateCheckError" xml:space="preserve">
+    <value>Při kontrole aktualizací došlo k chybě. Prosím, zkuste to znovu později.</value>
+  </data>
+  <data name="MessageUpToDate" xml:space="preserve">
+    <value>Aplikace je aktuální</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>https://fortsoft.cz/</value>
+  </data>
+  <data name="CaptionHelp" xml:space="preserve">
+    <value>Nápověda</value>
+  </data>
+  <data name="ExceptionMessageM" xml:space="preserve">
+    <value>Nesoulad argumentů.</value>
+  </data>
+  <data name="ExceptionMessageU" xml:space="preserve">
+    <value>Byl použit neznámý přepínač.</value>
+  </data>
+  <data name="ExceptionMessageB" xml:space="preserve">
+    <value>Vícenásobné zadání indexu tlačítek.</value>
+  </data>
+  <data name="ExceptionMessageC" xml:space="preserve">
+    <value>Vícenásobné zadání titulku.</value>
+  </data>
+  <data name="ExceptionMessageD" xml:space="preserve">
+    <value>Vícenásobné zadání indexu výchozího tlačítka.</value>
+  </data>
+  <data name="ExceptionMessageI" xml:space="preserve">
+    <value>Vícenásobné zadání indexu ikony.</value>
+  </data>
+  <data name="ExceptionMessageO" xml:space="preserve">
+    <value>Vícenásobné zadání cesty k výstupnímu souboru.</value>
+  </data>
+  <data name="ExceptionMessageS" xml:space="preserve">
+    <value>Text zprávy musí být zadán.</value>
+  </data>
+  <data name="ExceptionMessageT" xml:space="preserve">
+    <value>Vícenásobné zadání textu zprávy.</value>
+  </data>
+  <data name="ExceptionMessageW" xml:space="preserve">
+    <value>Vícenásobné zadání šířky formuláře.</value>
+  </data>
+  <data name="CaptionAbout" xml:space="preserve">
+    <value>O aplikaci</value>
+  </data>
+  <data name="LabelVersion" xml:space="preserve">
+    <value>Verze:</value>
+  </data>
+  <data name="LabelWebsite" xml:space="preserve">
+    <value>Web:</value>
+  </data>
+  <data name="ToolTipVisit" xml:space="preserve">
+    <value>Navštívit web</value>
+  </data>
+  <data name="HelpLine1" xml:space="preserve">
+    <value>/c\tZáhlaví formuláře.</value>
+  </data>
+  <data name="HelpLine10" xml:space="preserve">
+    <value>/o\tCesta k výstupnímu souboru.</value>
+  </data>
+  <data name="HelpLine2" xml:space="preserve">
+    <value>/t\tText zprávy.</value>
+  </data>
+  <data name="HelpLine3" xml:space="preserve">
+    <value>/b\tIndex tlačítek.</value>
+  </data>
+  <data name="HelpLine4" xml:space="preserve">
+    <value>/i\tIndex ikony.</value>
+  </data>
+  <data name="HelpLine5" xml:space="preserve">
+    <value>/d\tIndex výchozího tlačítka.</value>
+  </data>
+  <data name="HelpLine6" xml:space="preserve">
+    <value>/e\tZobrazit tlačítko nápovědy.</value>
+  </data>
+  <data name="HelpLine7" xml:space="preserve">
+    <value>/m\tMaximální šířka v pixelech.</value>
+  </data>
+  <data name="HelpLine8" xml:space="preserve">
+    <value>/w\tNezalamovat.</value>
+  </data>
+  <data name="HelpLine9" xml:space="preserve">
+    <value>/s\tZákladní téma.</value>
+  </data>
+  <data name="HelpLine11" xml:space="preserve">
+    <value>/T\tTest analýzy argumentů.</value>
+  </data>
+  <data name="ButtonNoAll" xml:space="preserve">
+    <value>Ne všem</value>
+  </data>
+  <data name="ButtonYesAll" xml:space="preserve">
+    <value>Ano všem</value>
+  </data>
+  <data name="HelpLine12" xml:space="preserve">
+    <value>/h, /?\tZobrazení této nápovědy.</value>
+  </data>
+</root>
