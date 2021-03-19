@@ -21,7 +21,7 @@
  * GetInfo(byte[] rawWebP, out int width, out int height, out bool has_alpha, out bool has_animation, out string format) - Get information of WEBP data
  * float[] PictureDistortion(Bitmap source, Bitmap reference, int metric_type) - Get PSNR, SSIM or LSIM distortion metric between two pictures
  **
- * Modified 2021-03-15 by Petr Červinka <cervinka@fortsoft.eu>
+ * Modified 2021-03-15 by Petr Červinka - FortSoft <cervinka@fortsoft.eu>
  * Reformatted to meet FortSoft codestyle.
  */
 
