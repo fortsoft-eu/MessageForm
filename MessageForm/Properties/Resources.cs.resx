@@ -178,7 +178,7 @@
     <value>Varování</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Testovací aplikace k testování třídy MessageForm.</value>
+    <value>Testovací aplikace k testování třídy MessageForm. Vydáno pod licencí MIT. Tento software používá části kódu v rámci licence MIT a části kódu v rámci licence BSD, jak je uvedeno níže.</value>
   </data>
   <data name="DummyCaption" xml:space="preserve">
     <value>Záhlaví</value>
@@ -428,5 +428,8 @@
   </data>
   <data name="HelpLine12" xml:space="preserve">
     <value>/h, /?\tZobrazení této nápovědy.</value>
+  </data>
+  <data name="LabelTargetFramework" xml:space="preserve">
+    <value>Cílový framework:</value>
   </data>
 </root>

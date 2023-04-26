@@ -24,12 +24,29 @@
  * Version 1.1.0.0
  */
 
-using System.Windows.Forms;
+using System;
+using System.Runtime.InteropServices;
 
 namespace MessageForm {
-    public partial class BackgroundForm : Form {
-        public BackgroundForm() {
-            InitializeComponent();
-        }
+    internal static class NativeMethods {
+
+        [DllImport("user32.dll")]
+        internal static extern bool EnableMenuItem(IntPtr hMenu, uint itemId, uint uEnable);
+
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+
+        [DllImport("user32.dll", EntryPoint = "mouse_event", SetLastError = true)]
+        internal static extern void MouseEvent(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr PostMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
     }
 }

@@ -322,7 +322,7 @@ namespace MessageForm.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test application for testing the MessageForm class..
+        ///   Looks up a localized string similar to Test application for testing the MessageForm class. Released under MIT License. This software uses portions of code under MIT License and portions of code under BSD License as shown below..
         /// </summary>
         internal static string Description {
             get {
@@ -575,11 +575,29 @@ namespace MessageForm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current version:.
+        /// </summary>
+        internal static string LabelCurrentVersion {
+            get {
+                return ResourceManager.GetString("LabelCurrentVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DialogResult:.
         /// </summary>
         internal static string LabelDialogResult {
             get {
                 return ResourceManager.GetString("LabelDialogResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target framework:.
+        /// </summary>
+        internal static string LabelTargetFramework {
+            get {
+                return ResourceManager.GetString("LabelTargetFramework", resourceCulture);
             }
         }
         
@@ -661,6 +679,15 @@ namespace MessageForm.Properties {
         internal static string MenuItemCopyLink {
             get {
                 return ResourceManager.GetString("MenuItemCopyLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Copy URL.
+        /// </summary>
+        internal static string MenuItemCopyUrl {
+            get {
+                return ResourceManager.GetString("MenuItemCopyUrl", resourceCulture);
             }
         }
         
@@ -760,6 +787,15 @@ namespace MessageForm.Properties {
         internal static string MenuItemOnlineHelp {
             get {
                 return ResourceManager.GetString("MenuItemOnlineHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open in Default Browser....
+        /// </summary>
+        internal static string MenuItemOpenInDefaultBrowser {
+            get {
+                return ResourceManager.GetString("MenuItemOpenInDefaultBrowser", resourceCulture);
             }
         }
         

@@ -1,4 +1,30 @@
-﻿namespace MessageForm {
+﻿/**
+ * This is open-source software licensed under the terms of the MIT License.
+ *
+ * Copyright (c) 2020-2023 Petr Červinka - FortSoft <cervinka@fortsoft.eu>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ **
+ * Version 1.1.0.0
+ */
+
+namespace MessageForm {
     partial class MainForm {
         /// <summary>
         /// Required designer variable.
@@ -86,9 +112,9 @@
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxKeyPress);
-            this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextBoxMouseDown);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
+            this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             // 
             // label2
             // 
@@ -99,12 +125,13 @@
             // 
             resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.Name = "textBox2";
-            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxKeyPress);
-            this.textBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextBoxMouseDown);
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
+            this.textBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.radioButton30);
             this.groupBox1.Controls.Add(this.radioButton29);
             this.groupBox1.Controls.Add(this.radioButton28);
@@ -123,7 +150,6 @@
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -133,7 +159,7 @@
             this.radioButton30.Name = "radioButton30";
             this.radioButton30.TabStop = true;
             this.radioButton30.UseVisualStyleBackColor = true;
-            this.radioButton30.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton30.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton29
             // 
@@ -141,7 +167,7 @@
             this.radioButton29.Name = "radioButton29";
             this.radioButton29.TabStop = true;
             this.radioButton29.UseVisualStyleBackColor = true;
-            this.radioButton29.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton29.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton28
             // 
@@ -149,7 +175,7 @@
             this.radioButton28.Name = "radioButton28";
             this.radioButton28.TabStop = true;
             this.radioButton28.UseVisualStyleBackColor = true;
-            this.radioButton28.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton28.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton15
             // 
@@ -157,7 +183,7 @@
             this.radioButton15.Name = "radioButton15";
             this.radioButton15.TabStop = true;
             this.radioButton15.UseVisualStyleBackColor = true;
-            this.radioButton15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton14
             // 
@@ -165,7 +191,7 @@
             this.radioButton14.Name = "radioButton14";
             this.radioButton14.TabStop = true;
             this.radioButton14.UseVisualStyleBackColor = true;
-            this.radioButton14.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton14.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton13
             // 
@@ -173,7 +199,7 @@
             this.radioButton13.Name = "radioButton13";
             this.radioButton13.TabStop = true;
             this.radioButton13.UseVisualStyleBackColor = true;
-            this.radioButton13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton13.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton12
             // 
@@ -181,7 +207,7 @@
             this.radioButton12.Name = "radioButton12";
             this.radioButton12.TabStop = true;
             this.radioButton12.UseVisualStyleBackColor = true;
-            this.radioButton12.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton12.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton11
             // 
@@ -189,7 +215,7 @@
             this.radioButton11.Name = "radioButton11";
             this.radioButton11.TabStop = true;
             this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton10
             // 
@@ -197,7 +223,7 @@
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.TabStop = true;
             this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton9
             // 
@@ -205,7 +231,7 @@
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.TabStop = true;
             this.radioButton9.UseVisualStyleBackColor = true;
-            this.radioButton9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton8
             // 
@@ -213,7 +239,7 @@
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.TabStop = true;
             this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton7
             // 
@@ -221,7 +247,7 @@
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.TabStop = true;
             this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton6
             // 
@@ -229,7 +255,7 @@
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.TabStop = true;
             this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton5
             // 
@@ -237,7 +263,7 @@
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.TabStop = true;
             this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton4
             // 
@@ -245,7 +271,7 @@
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.TabStop = true;
             this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton3
             // 
@@ -253,7 +279,7 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.TabStop = true;
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton2
             // 
@@ -261,7 +287,7 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.TabStop = true;
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton1
             // 
@@ -269,10 +295,11 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.radioButton31);
             this.groupBox2.Controls.Add(this.radioButton23);
             this.groupBox2.Controls.Add(this.radioButton22);
@@ -282,7 +309,6 @@
             this.groupBox2.Controls.Add(this.radioButton18);
             this.groupBox2.Controls.Add(this.radioButton17);
             this.groupBox2.Controls.Add(this.radioButton16);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -299,7 +325,7 @@
             this.radioButton23.Name = "radioButton23";
             this.radioButton23.TabStop = true;
             this.radioButton23.UseVisualStyleBackColor = true;
-            this.radioButton23.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton23.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton22
             // 
@@ -307,7 +333,7 @@
             this.radioButton22.Name = "radioButton22";
             this.radioButton22.TabStop = true;
             this.radioButton22.UseVisualStyleBackColor = true;
-            this.radioButton22.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton22.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton21
             // 
@@ -315,7 +341,7 @@
             this.radioButton21.Name = "radioButton21";
             this.radioButton21.TabStop = true;
             this.radioButton21.UseVisualStyleBackColor = true;
-            this.radioButton21.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton21.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton20
             // 
@@ -323,7 +349,7 @@
             this.radioButton20.Name = "radioButton20";
             this.radioButton20.TabStop = true;
             this.radioButton20.UseVisualStyleBackColor = true;
-            this.radioButton20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton19
             // 
@@ -331,7 +357,7 @@
             this.radioButton19.Name = "radioButton19";
             this.radioButton19.TabStop = true;
             this.radioButton19.UseVisualStyleBackColor = true;
-            this.radioButton19.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton19.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton18
             // 
@@ -339,7 +365,7 @@
             this.radioButton18.Name = "radioButton18";
             this.radioButton18.TabStop = true;
             this.radioButton18.UseVisualStyleBackColor = true;
-            this.radioButton18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton18.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton17
             // 
@@ -347,7 +373,7 @@
             this.radioButton17.Name = "radioButton17";
             this.radioButton17.TabStop = true;
             this.radioButton17.UseVisualStyleBackColor = true;
-            this.radioButton17.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton17.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton16
             // 
@@ -355,7 +381,7 @@
             this.radioButton16.Name = "radioButton16";
             this.radioButton16.TabStop = true;
             this.radioButton16.UseVisualStyleBackColor = true;
-            this.radioButton16.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton16.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // button1
             // 
@@ -363,15 +389,15 @@
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ShowDialog);
-            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.radioButton27);
             this.groupBox3.Controls.Add(this.radioButton26);
             this.groupBox3.Controls.Add(this.radioButton25);
             this.groupBox3.Controls.Add(this.radioButton24);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -381,7 +407,7 @@
             this.radioButton27.Name = "radioButton27";
             this.radioButton27.TabStop = true;
             this.radioButton27.UseVisualStyleBackColor = true;
-            this.radioButton27.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton27.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton26
             // 
@@ -389,7 +415,7 @@
             this.radioButton26.Name = "radioButton26";
             this.radioButton26.TabStop = true;
             this.radioButton26.UseVisualStyleBackColor = true;
-            this.radioButton26.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton26.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton25
             // 
@@ -397,7 +423,7 @@
             this.radioButton25.Name = "radioButton25";
             this.radioButton25.TabStop = true;
             this.radioButton25.UseVisualStyleBackColor = true;
-            this.radioButton25.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton25.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // radioButton24
             // 
@@ -405,21 +431,21 @@
             this.radioButton24.Name = "radioButton24";
             this.radioButton24.TabStop = true;
             this.radioButton24.UseVisualStyleBackColor = true;
-            this.radioButton24.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.radioButton24.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // checkBox1
             // 
             resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // checkBox2
             // 
             resources.ApplyResources(this.checkBox2, "checkBox2");
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // statusBar
             // 
@@ -434,28 +460,28 @@
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.MaximumCheckedChanged);
-            this.checkBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // checkBox4
             // 
             resources.ApplyResources(this.checkBox4, "checkBox4");
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // checkBox5
             // 
             resources.ApplyResources(this.checkBox5, "checkBox5");
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // numericUpDown
             // 
             resources.ApplyResources(this.numericUpDown, "numericUpDown");
             this.numericUpDown.Name = "numericUpDown";
-            this.numericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
-            this.numericUpDown.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericUpDownKeyPress);
+            this.numericUpDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.numericUpDown.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnKeyPress);
             // 
             // checkBox6
             // 
@@ -463,7 +489,7 @@
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.CheckedChanged += new System.EventHandler(this.ShowMessageBoxCheckedChanged);
-            this.checkBox6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.checkBox6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // MainForm
             // 
@@ -491,7 +517,7 @@
             this.Activated += new System.EventHandler(this.OnFormActivated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.OnFormLoad);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownHandler);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

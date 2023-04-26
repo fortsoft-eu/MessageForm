@@ -1,4 +1,30 @@
-﻿namespace MessageForm {
+﻿/**
+ * This is open-source software licensed under the terms of the MIT License.
+ *
+ * Copyright (c) 2020-2023 Petr Červinka - FortSoft <cervinka@fortsoft.eu>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ **
+ * Version 1.1.0.0
+ */
+
+namespace MessageForm {
     partial class AboutForm {
         /// <summary>
         /// Required designer variable.
@@ -24,36 +50,39 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.button = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelProductInfo = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.linkLabel = new System.Windows.Forms.LinkLabel();
+            this.linkLabel = new FortSoft.Controls.LinkLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelWebsite = new System.Windows.Forms.Label();
+            this.panelProductInfo = new System.Windows.Forms.Panel();
+            this.panelWebsite = new System.Windows.Forms.Panel();
+            this.textBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelProductInfo.SuspendLayout();
+            this.panelWebsite.SuspendLayout();
             this.SuspendLayout();
             // 
             // button
             // 
             this.button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button.Location = new System.Drawing.Point(13, 86);
+            this.button.Location = new System.Drawing.Point(437, 384);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(75, 23);
-            this.button.TabIndex = 2;
+            this.button.TabIndex = 3;
             this.button.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelProductInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 1;
+            this.labelProductInfo.AutoSize = true;
+            this.labelProductInfo.Location = new System.Drawing.Point(60, 12);
+            this.labelProductInfo.Name = "labelProductInfo";
+            this.labelProductInfo.Size = new System.Drawing.Size(65, 13);
+            this.labelProductInfo.TabIndex = 1;
+            this.labelProductInfo.Text = "Product Info";
             // 
             // pictureBox
             // 
@@ -69,53 +98,73 @@
             this.linkLabel.AutoSize = true;
             this.linkLabel.Location = new System.Drawing.Point(60, 13);
             this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(0, 13);
+            this.linkLabel.Size = new System.Drawing.Size(123, 13);
             this.linkLabel.TabIndex = 2;
+            this.linkLabel.TabStop = true;
             this.linkLabel.Tag = "";
+            this.linkLabel.Text = "               Link to website";
             this.linkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLinkClicked);
             // 
-            // label2
+            // labelWebsite
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 1;
+            this.labelWebsite.AutoSize = true;
+            this.labelWebsite.Location = new System.Drawing.Point(60, 13);
+            this.labelWebsite.Name = "labelWebsite";
+            this.labelWebsite.Size = new System.Drawing.Size(46, 13);
+            this.labelWebsite.TabIndex = 1;
+            this.labelWebsite.Text = "Website";
             // 
-            // panel1
+            // panelProductInfo
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panelProductInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(92, 51);
-            this.panel1.TabIndex = 0;
+            this.panelProductInfo.AutoSize = true;
+            this.panelProductInfo.Controls.Add(this.pictureBox);
+            this.panelProductInfo.Controls.Add(this.labelProductInfo);
+            this.panelProductInfo.Location = new System.Drawing.Point(0, 0);
+            this.panelProductInfo.Name = "panelProductInfo";
+            this.panelProductInfo.Size = new System.Drawing.Size(516, 51);
+            this.panelProductInfo.TabIndex = 0;
             // 
-            // panel2
+            // panelWebsite
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.panelWebsite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.linkLabel);
-            this.panel2.Location = new System.Drawing.Point(0, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(92, 29);
-            this.panel2.TabIndex = 1;
+            this.panelWebsite.Controls.Add(this.labelWebsite);
+            this.panelWebsite.Controls.Add(this.linkLabel);
+            this.panelWebsite.Location = new System.Drawing.Point(0, 51);
+            this.panelWebsite.Name = "panelWebsite";
+            this.panelWebsite.Size = new System.Drawing.Size(516, 29);
+            this.panelWebsite.TabIndex = 1;
+            // 
+            // textBox
+            // 
+            this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox.Location = new System.Drawing.Point(12, 86);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.ReadOnly = true;
+            this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox.Size = new System.Drawing.Size(500, 292);
+            this.textBox.TabIndex = 2;
+            this.textBox.Text = resources.GetString("textBox.Text");
+            this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.textBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.button;
-            this.ClientSize = new System.Drawing.Size(100, 121);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(524, 419);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.panelWebsite);
+            this.Controls.Add(this.panelProductInfo);
             this.Controls.Add(this.button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -125,12 +174,13 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Activated += new System.EventHandler(this.OnFormActivated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.Load += new System.EventHandler(this.OnFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelProductInfo.ResumeLayout(false);
+            this.panelProductInfo.PerformLayout();
+            this.panelWebsite.ResumeLayout(false);
+            this.panelWebsite.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,12 +189,13 @@
         #endregion
 
         private System.Windows.Forms.Button button;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel;
+        private System.Windows.Forms.Label labelProductInfo;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelWebsite;
+        private System.Windows.Forms.Panel panelProductInfo;
+        private System.Windows.Forms.Panel panelWebsite;
+        private System.Windows.Forms.TextBox textBox;
+        private FortSoft.Controls.LinkLabel linkLabel;
     }
 }

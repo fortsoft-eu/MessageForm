@@ -1,246 +1,225 @@
-﻿using System.Text;
+﻿/**
+ * This is open-source software licensed under the terms of the MIT License.
+ *
+ * Copyright (c) 2020-2023 Petr Červinka - FortSoft <cervinka@fortsoft.eu>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ **
+ * Version 1.1.0.0
+ */
+
+using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MessageForm {
     public class CodeGenerator {
-        private string caption, text;
-        private bool setParent, centerScreen, showHelpButton, noWrap, showMessageBox;
-        private int maximumWidth;
-        private MessageForm.Buttons formButtons;
-        private MessageForm.BoxIcon formBoxIcon;
-        private MessageForm.DefaultButton formDefaultButton;
-        private MessageBoxButtons boxButtons;
-        private MessageBoxIcon boxIcon;
-        private MessageBoxDefaultButton boxDefaultButton;
-        private Form parent, dialog;
+        private Form dialog;
 
-        public delegate void CodeGeneratorEventHandler(object sender, Form dialog);
-
-        public event CodeGeneratorEventHandler DialogCreated;
+        public event EventHandler<CodeGeneratorEventArgs> DialogCreated;
         public event HelpEventHandler HelpRequested;
 
-        public Form Parent {
-            get {
-                return parent;
-            }
-            set {
-                parent = value;
-            }
-        }
+        public bool CenterScreen { get; set; }
 
-        public bool SetParent {
-            get {
-                return setParent;
-            }
-            set {
-                setParent = value;
-            }
-        }
+        public bool NoWrap { get; set; }
 
-        public string Caption {
-            get {
-                return caption;
-            }
-            set {
-                caption = value;
-            }
-        }
+        public bool SetParent { get; set; }
 
-        public string Text {
-            get {
-                return text;
-            }
-            set {
-                text = value;
-            }
-        }
+        public bool ShowHelpButton { get; set; }
 
-        public MessageForm.Buttons FormButtons {
-            get {
-                return formButtons;
-            }
-            set {
-                formButtons = value;
-            }
-        }
+        public bool ShowMessageBox { get; set; }
 
-        public MessageForm.BoxIcon FormBoxIcon {
-            get {
-                return formBoxIcon;
-            }
-            set {
-                formBoxIcon = value;
-            }
-        }
+        public Form Parent { get; set; }
 
-        public MessageForm.DefaultButton FormDefaultButton {
-            get {
-                return formDefaultButton;
-            }
-            set {
-                formDefaultButton = value;
-            }
-        }
+        public int MaximumWidth { get; set; }
 
-        public MessageBoxButtons BoxButtons {
-            get {
-                return boxButtons;
-            }
-            set {
-                boxButtons = value;
-            }
-        }
+        public MessageBoxButtons BoxButtons { get; set; }
 
-        public MessageBoxIcon BoxIcon {
-            get {
-                return boxIcon;
-            }
-            set {
-                boxIcon = value;
-            }
-        }
+        public MessageBoxDefaultButton BoxDefaultButton { get; set; }
 
-        public MessageBoxDefaultButton BoxDefaultButton {
-            get {
-                return boxDefaultButton;
-            }
-            set {
-                boxDefaultButton = value;
-            }
-        }
+        public MessageBoxIcon BoxIcon { get; set; }
 
-        public bool CenterScreen {
-            get {
-                return centerScreen;
-            }
-            set {
-                centerScreen = value;
-            }
-        }
+        public MessageForm.BoxIcon FormBoxIcon { get; set; }
 
-        public bool ShowHelpButton {
-            get {
-                return showHelpButton;
-            }
-            set {
-                showHelpButton = value;
-            }
-        }
+        public MessageForm.Buttons FormButtons { get; set; }
 
-        public int MaximumWidth {
-            get {
-                return maximumWidth;
-            }
-            set {
-                maximumWidth = value;
-            }
-        }
+        public MessageForm.DefaultButton FormDefaultButton { get; set; }
 
-        public bool NoWrap {
-            get {
-                return noWrap;
-            }
-            set {
-                noWrap = value;
-            }
-        }
+        public string Caption { get; set; }
 
-        public bool ShowMessageBox {
-            get {
-                return showMessageBox;
-            }
-            set {
-                showMessageBox = value;
-            }
-        }
-
-        public void ShowCode() {
-            if (dialog == null || !dialog.Visible) {
-                CodeForm showCodeForm = new CodeForm(GenerateCode());
-                showCodeForm.HelpRequested += new HelpEventHandler(OnHelpRequested);
-                dialog = showCodeForm;
-                DialogCreated?.Invoke(this, showCodeForm);
-                showCodeForm.ShowDialog(parent);
-            }
-        }
+        public string Text { get; set; }
 
         private string GenerateCode() {
             StringBuilder stringBuilder = new StringBuilder();
-            if (showMessageBox) {
-                stringBuilder.Append(Constants.CodeGeneratorMsgBoxInst);
-                if (setParent) {
-                    stringBuilder.Append(Constants.CodeGeneratorThis);
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
+            if (ShowMessageBox) {
+                stringBuilder.Append(Constants.CodeGeneratorMsgBoxInst)
+                    .Append(Constants.OpeningParenthesis);
+                if (SetParent) {
+                    stringBuilder.Append(Constants.CodeGeneratorThis)
+                        .Append(Constants.Comma)
+                        .Append(Constants.Space);
                 }
-                stringBuilder.Append(string.IsNullOrEmpty(text) ? Constants.CodeGeneratorNull : ArgumentParser.EscapeArgument(text));
-                if (!string.IsNullOrEmpty(caption) || boxButtons > 0 || boxIcon > 0 || boxDefaultButton > 0) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.IsNullOrEmpty(caption) ? Constants.CodeGeneratorNull : ArgumentParser.EscapeArgument(caption));
+                if (string.IsNullOrEmpty(Text)) {
+                    stringBuilder.Append(Constants.CodeGeneratorStringEmpty);
+                } else {
+                    stringBuilder.Append(StaticMethods.EscapeArgument(Text));
                 }
-                if (boxButtons > 0 || boxIcon > 0 || formDefaultButton > 0) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageBoxButtons).Name, boxButtons.ToString() }));
+                if (!string.IsNullOrEmpty(Caption) || BoxButtons > 0 || BoxIcon > 0 || BoxDefaultButton > 0) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space);
+                    if (string.IsNullOrEmpty(Caption)) {
+                        stringBuilder.Append(Constants.CodeGeneratorNull);
+                    } else {
+                        stringBuilder.Append(StaticMethods.EscapeArgument(Caption));
+                    }
                 }
-                if (boxIcon > 0 || formDefaultButton > 0) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageBoxIcon).Name, boxIcon.ToString() }));
+                if (BoxButtons > 0 || BoxIcon > 0 || FormDefaultButton > 0) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageBoxButtons).Name,
+                            BoxButtons.ToString()
+                        }));
                 }
-                if (boxDefaultButton > 0) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageBoxDefaultButton).Name, boxDefaultButton.ToString() }));
+                if (BoxIcon > 0 || FormDefaultButton > 0) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageBoxIcon).Name,
+                            BoxIcon.ToString()
+                        }));
                 }
-                stringBuilder.Append(Constants.CodeGeneratorEndBracketAndSemicolon);
+                if (BoxDefaultButton > 0) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageBoxDefaultButton).Name,
+                            BoxDefaultButton.ToString()
+                        }));
+                }
+                stringBuilder.Append(Constants.ClosingParenthesis)
+                    .Append(Constants.Semicolon);
             } else {
-                stringBuilder.Append(Constants.CodeGeneratorMsgFormInst);
-                if (setParent) {
+                stringBuilder.Append(Constants.CodeGeneratorMsgFormInst)
+                    .Append(Constants.OpeningParenthesis);
+                if (SetParent) {
+                    stringBuilder.Append(Constants.CodeGeneratorThis)
+                        .Append(Constants.Comma)
+                        .Append(Constants.Space);
+                }
+                if (string.IsNullOrEmpty(Text)) {
+                    stringBuilder.Append(Constants.CodeGeneratorStringEmpty);
+                } else {
+                    stringBuilder.Append(StaticMethods.EscapeArgument(Text));
+                }
+                if (!string.IsNullOrEmpty(Caption) || FormButtons > 0 || FormBoxIcon > 0 || FormDefaultButton > 0 || CenterScreen
+                        || ShowHelpButton || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space);
+                    if (string.IsNullOrEmpty(Caption)) {
+                        stringBuilder.Append(Constants.CodeGeneratorNull);
+                    } else {
+                        stringBuilder.Append(StaticMethods.EscapeArgument(Caption));
+                    }
+                }
+                if (FormButtons > 0 || FormBoxIcon > 0 || FormDefaultButton > 0 || CenterScreen || ShowHelpButton
+                        || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageForm.Buttons).Namespace,
+                            typeof(MessageForm.Buttons).Name,
+                            FormButtons.ToString()
+                        }));
+                }
+                if (FormBoxIcon > 0 || FormDefaultButton > 0 || CenterScreen || ShowHelpButton
+                        || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageForm.BoxIcon).Namespace,
+                            typeof(MessageForm.BoxIcon).Name,
+                            FormBoxIcon.ToString()
+                        }));
+                }
+                if (FormDefaultButton > 0 || CenterScreen || ShowHelpButton
+                        || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(string.Join(Constants.Period.ToString(), new string[] {
+                            typeof(MessageForm.DefaultButton).Namespace,
+                            typeof(MessageForm.DefaultButton).Name,
+                            FormDefaultButton.ToString()
+                        }));
+                }
+                if (CenterScreen || ShowHelpButton || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(CenterScreen.ToString().ToLowerInvariant());
+                }
+                if (ShowHelpButton || MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(ShowHelpButton.ToString().ToLowerInvariant());
+                }
+                if (MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth) || NoWrap) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space);
+                    if (MaximumWidth > 0 && !MaximumWidth.Equals(MessageForm.defaultWidth)) {
+                        stringBuilder.Append(MaximumWidth);
+                    } else {
+                        stringBuilder.Append(0);
+                    }
+                }
+                if (NoWrap) {
+                    stringBuilder.Append(Constants.Comma)
+                        .Append(Constants.Space)
+                        .Append(NoWrap.ToString().ToLowerInvariant());
+                }
+                stringBuilder.Append(Constants.ClosingParenthesis)
+                    .Append(Constants.Semicolon)
+                    .AppendLine()
+                    .Append(Constants.CodeGeneratorMsgFormShowDlg)
+                    .Append(Constants.OpeningParenthesis);
+                if (SetParent) {
                     stringBuilder.Append(Constants.CodeGeneratorThis);
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
                 }
-                stringBuilder.Append(string.IsNullOrEmpty(text) ? Constants.CodeGeneratorNull : ArgumentParser.EscapeArgument(text));
-                if (!string.IsNullOrEmpty(caption) || formButtons > 0 || formBoxIcon > 0 || formDefaultButton > 0 || centerScreen || showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.IsNullOrEmpty(caption) ? Constants.CodeGeneratorNull : ArgumentParser.EscapeArgument(caption));
-                }
-                if (formButtons > 0 || formBoxIcon > 0 || formDefaultButton > 0 || centerScreen || showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageForm.Buttons).Namespace, typeof(MessageForm.Buttons).Name, formButtons.ToString() }));
-                }
-                if (formBoxIcon > 0 || formDefaultButton > 0 || centerScreen || showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageForm.BoxIcon).Namespace, typeof(MessageForm.BoxIcon).Name, formBoxIcon.ToString() }));
-                }
-                if (formDefaultButton > 0 || centerScreen || showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(string.Join(".", new string[] { typeof(MessageForm.DefaultButton).Namespace, typeof(MessageForm.DefaultButton).Name, formDefaultButton.ToString() }));
-                }
-                if (centerScreen || showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(centerScreen.ToString().ToLowerInvariant());
-                }
-                if (showHelpButton || maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(showHelpButton.ToString().ToLowerInvariant());
-                }
-                if (maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth || noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(maximumWidth > 0 && maximumWidth != MessageForm.defaultWidth ? maximumWidth.ToString() : 0.ToString());
-                }
-                if (noWrap) {
-                    stringBuilder.Append(Constants.CodeGeneratorCommaAndSpace);
-                    stringBuilder.Append(noWrap.ToString().ToLowerInvariant());
-                }
-                stringBuilder.AppendLine(Constants.CodeGeneratorEndBracketAndSemicolon);
-                stringBuilder.Append(Constants.CodeGeneratorMsgFormShowDlg);
-                if (setParent) {
-                    stringBuilder.Append(Constants.CodeGeneratorThis);
-                }
-                stringBuilder.Append(Constants.CodeGeneratorEndBracketAndSemicolon);
+                stringBuilder.Append(Constants.ClosingParenthesis)
+                    .Append(Constants.Semicolon);
             }
             return stringBuilder.ToString();
         }
 
-        private void OnHelpRequested(object sender, HelpEventArgs hlpevent) {
-            HelpRequested?.Invoke(sender, hlpevent);
+        private void OnHelpRequested(object sender, HelpEventArgs hlpevent) => HelpRequested?.Invoke(sender, hlpevent);
+
+        public void ShowCode() {
+            if (dialog == null || !dialog.Visible) {
+                CodeForm codeForm = new CodeForm(GenerateCode());
+                codeForm.HelpRequested += new HelpEventHandler(OnHelpRequested);
+                dialog = codeForm;
+                DialogCreated?.Invoke(this, new CodeGeneratorEventArgs(codeForm));
+                codeForm.ShowDialog(Parent);
+            }
         }
     }
 }

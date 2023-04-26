@@ -24,12 +24,22 @@
  * Version 1.1.0.0
  */
 
+using System;
 using System.Windows.Forms;
 
 namespace MessageForm {
-    public partial class BackgroundForm : Form {
-        public BackgroundForm() {
-            InitializeComponent();
+    public class UpdateCheckEventArgs : EventArgs {
+
+        public Form Dialog { get; private set; }
+
+        public UpdateChecker.State State { get; private set; }
+
+        public string Message { get; private set; }
+
+        public UpdateCheckEventArgs(Form dialog, UpdateChecker.State state, string message) {
+            Dialog = dialog;
+            State = state;
+            Message = message;
         }
     }
 }

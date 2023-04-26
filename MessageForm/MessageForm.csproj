@@ -37,12 +37,14 @@
     <StartupObject>MessageForm.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
@@ -65,9 +67,14 @@
       <DependentUpon>BackgroundForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CodeGenerator.cs" />
+    <Compile Include="CodeGeneratorEventArgs.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ErrorLog.cs" />
     <Compile Include="FileExtensionFilter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="LinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +87,7 @@
     <Compile Include="MessageForm.Designer.cs">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="PersistentSettings.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,8 +109,10 @@
     <Compile Include="CodeForm.Designer.cs">
       <DependentUpon>CodeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SingleMainForm.cs" />
+    <Compile Include="SingleInstance.cs" />
+    <Compile Include="StaticMethods.cs" />
     <Compile Include="UpdateChecker.cs" />
+    <Compile Include="UpdateCheckEventArgs.cs" />
     <Compile Include="UpdateCheckForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,20 +123,11 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArgumentParserForm.resx">
-      <DependentUpon>ArgumentParserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BackgroundForm.resx">
-      <DependentUpon>BackgroundForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.cs.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MessageForm.resx">
-      <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PreferencesForm.cs.resx">
       <DependentUpon>PreferencesForm.cs</DependentUpon>
@@ -144,13 +145,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="CodeForm.resx">
-      <DependentUpon>CodeForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.cs.resx" />
-    <EmbeddedResource Include="UpdateCheckForm.resx">
-      <DependentUpon>UpdateCheckForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,28 +160,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="OK.ico" />
+    <None Include="Resources\OK.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShieldError.ico" />
+    <None Include="Resources\ShieldError.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShieldWarning.ico" />
+    <None Include="Resources\ShieldWarning.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Icon.ico" />
+    <None Include="Resources\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Warning.ico" />
+    <None Include="Resources\Warning.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShieldOk.ico" />
+    <None Include="Resources\ShieldOk.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShieldQuestion.ico" />
+    <None Include="Resources\ShieldQuestion.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShieldQuestionRed.ico" />
+    <None Include="Resources\ShieldQuestionRed.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="libwebp_x64.dll">

@@ -24,12 +24,16 @@
  * Version 1.1.0.0
  */
 
+using System;
 using System.Windows.Forms;
 
 namespace MessageForm {
-    public partial class BackgroundForm : Form {
-        public BackgroundForm() {
-            InitializeComponent();
+    public class CodeGeneratorEventArgs : EventArgs {
+
+        public Form Dialog { get; private set; }
+
+        public CodeGeneratorEventArgs(Form dialog) {
+            Dialog = dialog;
         }
     }
 }

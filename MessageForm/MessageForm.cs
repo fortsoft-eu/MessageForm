@@ -1,61 +1,284 @@
-﻿using System;
+﻿/**
+ * This is open-source software licensed under the terms of the MIT License.
+ *
+ * Copyright (c) 2020-2023 Petr Červinka - FortSoft <cervinka@fortsoft.eu>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ **
+ * Version 1.1.0.0
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MessageForm {
+
+    /// <summary>
+    /// Own extended alternative to MessageBox.
+    /// </summary>
     public partial class MessageForm : Form {
-        private const int SC_CLOSE = 0xF060;
+
+        /// <summary>
+        /// Constant
+        /// </summary>
         public const int defaultWidth = 420;
 
-        private Form parent;
-        private string text, caption;
-        private Buttons buttons;
-        private BoxIcon icon;
-        private DefaultButton defaultButton;
-        private int maxWidth;
+        /// <summary>
+        /// Fields
+        /// </summary>
         private bool noWrap;
+        private BoxIcon icon;
+        private Buttons buttons;
         private ClickedButton clickedButton;
+        private DefaultButton defaultButton;
+        private Form parent;
+        private int maxWidth;
+        private string caption;
+        private string text;
 
-        public MessageForm(string text) : this(null, text, null, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(string text)
 
-        public MessageForm(Form parent, string text) : this(parent, text, null, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+            : this(null, text, null, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption) : this(null, text, caption, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text)
 
-        public MessageForm(Form parent, string text, string caption) : this(parent, text, caption, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+            : this(parent, text, null, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons) : this(null, text, caption, buttons, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons) : this(parent, text, caption, buttons, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
+            : this(null, text, caption, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon) : this(null, text, caption, buttons, icon, DefaultButton.Button1, false, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon) : this(parent, text, caption, buttons, icon, DefaultButton.Button1, false, false, 0, false) { }
+            : this(parent, text, caption, Buttons.OK, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton) : this(null, text, caption, buttons, icon, defaultButton, false, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton) : this(parent, text, caption, buttons, icon, defaultButton, false, false, 0, false) { }
+            : this(null, text, caption, buttons, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen) : this(null, text, caption, buttons, icon, defaultButton, centerScreen, false, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen) : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, false, 0, false) { }
+            : this(parent, text, caption, buttons, BoxIcon.None, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton) : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, 0, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton) : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, 0, false) { }
+            : this(null, text, caption, buttons, icon, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton, int maxWidth) : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, false) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton, int maxWidth) : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, false) { }
+            : this(parent, text, caption, buttons, icon, DefaultButton.Button1, false, false, 0, false) { }
 
-        public MessageForm(string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton, int maxWidth, bool noWrap) : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, noWrap) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton)
 
-        public MessageForm(Form parent, string text, string caption, Buttons buttons, BoxIcon icon, DefaultButton defaultButton, bool centerScreen, bool displayHelpButton, int maxWidth, bool noWrap) {
+            : this(null, text, caption, buttons, icon, defaultButton, false, false, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton)
+
+            : this(parent, text, caption, buttons, icon, defaultButton, false, false, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen)
+
+            : this(null, text, caption, buttons, icon, defaultButton, centerScreen, false, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen)
+
+            : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, false, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton)
+
+            : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton)
+
+            : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, 0, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton,
+                int maxWidth)
+
+            : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton,
+                int maxWidth)
+
+            : this(parent, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, false) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton,
+                int maxWidth,
+                bool noWrap)
+
+            : this(null, text, caption, buttons, icon, defaultButton, centerScreen, displayHelpButton, maxWidth, noWrap) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageForm"/> class.
+        /// </summary>
+        public MessageForm(
+                Form parent,
+                string text,
+                string caption,
+                Buttons buttons,
+                BoxIcon icon,
+                DefaultButton defaultButton,
+                bool centerScreen,
+                bool displayHelpButton,
+                int maxWidth,
+                bool noWrap) {
+
             this.parent = parent;
             this.text = text;
             this.caption = caption;
@@ -78,9 +301,7 @@ namespace MessageForm {
             label.ContextMenu.MenuItems.Add(new MenuItem(Properties.Resources.MenuItemCopy, new EventHandler(Copy)));
         }
 
-        private void SetCaption() {
-            Text = string.IsNullOrWhiteSpace(caption) ? Program.GetTitle() : caption.Trim();
-        }
+        private void SetCaption() => Text = string.IsNullOrWhiteSpace(caption) ? Program.GetTitle() : caption.Trim();
 
         private void SetText() {
             if (string.IsNullOrEmpty(text)) {
@@ -89,22 +310,30 @@ namespace MessageForm {
             List<string> lines = new List<string>();
             StringReader stringReader = new StringReader(text);
             for (string line; (line = stringReader.ReadLine()) != null;) {
-                string[] words = line.Split(' ');
                 StringBuilder stringBuilder = new StringBuilder();
-                foreach (string word in words) {
-                    if (stringBuilder.Length == 0) {
+                foreach (string word in line.Split(Constants.Space)) {
+                    if (stringBuilder.Length.Equals(0)) {
                         stringBuilder.Append(word);
-                    } else if (TextRenderer.MeasureText(stringBuilder.ToString() + Constants.Space + word, label.Font).Width <= (icon == BoxIcon.None ? maxWidth : maxWidth - 50) || noWrap) {
-                        stringBuilder.Append(Constants.Space + word);
                     } else {
-                        lines.Add(stringBuilder.ToString());
-                        stringBuilder = new StringBuilder();
-                        stringBuilder.Append(word);
+                        string str = new StringBuilder()
+                            .Append(stringBuilder.ToString())
+                            .Append(Constants.Space)
+                            .Append(word)
+                            .ToString();
+                        if (TextRenderer.MeasureText(str, label.Font).Width <= (icon.Equals(BoxIcon.None) ? maxWidth : maxWidth - 50)
+                                || noWrap) {
+
+                            stringBuilder.Append(Constants.Space)
+                                .Append(word);
+                        } else {
+                            lines.Add(stringBuilder.ToString());
+                            stringBuilder = new StringBuilder(word);
+                        }
                     }
                 }
                 lines.Add(stringBuilder.ToString());
             }
-            if (lines.Count == 2) {
+            if (lines.Count.Equals(2)) {
                 label.Location = new Point(label.Left, 18);
             } else if (lines.Count > 2) {
                 label.Location = new Point(label.Left, 12);
@@ -126,7 +355,7 @@ namespace MessageForm {
                     button4.DialogResult = DialogResult.Cancel;
                     CancelButton = button4;
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.OK) {
+                        if (DialogResult.Equals(DialogResult.OK)) {
                             clickedButton = ClickedButton.Button1;
                         } else {
                             clickedButton = ClickedButton.Button2;
@@ -144,11 +373,11 @@ namespace MessageForm {
                     button4.DialogResult = DialogResult.Ignore;
                     DisableCloseButton();
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.Abort) {
+                        if (DialogResult.Equals(DialogResult.Abort)) {
                             clickedButton = ClickedButton.Button1;
-                        } else if (DialogResult == DialogResult.Retry) {
+                        } else if (DialogResult.Equals(DialogResult.Retry)) {
                             clickedButton = ClickedButton.Button2;
-                        } else if (DialogResult == DialogResult.Ignore) {
+                        } else if (DialogResult.Equals(DialogResult.Ignore)) {
                             clickedButton = ClickedButton.Button3;
                         }
                     });
@@ -164,9 +393,9 @@ namespace MessageForm {
                     button4.DialogResult = DialogResult.Cancel;
                     CancelButton = button4;
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.Yes) {
+                        if (DialogResult.Equals(DialogResult.Yes)) {
                             clickedButton = ClickedButton.Button1;
-                        } else if (DialogResult == DialogResult.No) {
+                        } else if (DialogResult.Equals(DialogResult.No)) {
                             clickedButton = ClickedButton.Button2;
                         } else {
                             clickedButton = ClickedButton.Button3;
@@ -183,9 +412,9 @@ namespace MessageForm {
                     button4.DialogResult = DialogResult.No;
                     DisableCloseButton();
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.Yes) {
+                        if (DialogResult.Equals(DialogResult.Yes)) {
                             clickedButton = ClickedButton.Button1;
-                        } else if (DialogResult == DialogResult.No) {
+                        } else if (DialogResult.Equals(DialogResult.No)) {
                             clickedButton = ClickedButton.Button2;
                         }
                     });
@@ -200,7 +429,7 @@ namespace MessageForm {
                     button4.DialogResult = DialogResult.Cancel;
                     CancelButton = button4;
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.Retry) {
+                        if (DialogResult.Equals(DialogResult.Retry)) {
                             clickedButton = ClickedButton.Button1;
                         } else {
                             clickedButton = ClickedButton.Button2;
@@ -218,16 +447,12 @@ namespace MessageForm {
                     button3.DialogResult = DialogResult.No;
                     button4.DialogResult = DialogResult.Cancel;
                     CancelButton = button4;
-                    button1.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button1;
-                    });
-                    button2.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button2;
-                    });
+                    button1.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button1);
+                    button2.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button2);
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.No) {
+                        if (DialogResult.Equals(DialogResult.No)) {
                             clickedButton = ClickedButton.Button3;
-                        } else if (DialogResult == DialogResult.Cancel) {
+                        } else if (DialogResult.Equals(DialogResult.Cancel)) {
                             clickedButton = ClickedButton.Button4;
                         }
                     });
@@ -243,16 +468,12 @@ namespace MessageForm {
                     button3.DialogResult = DialogResult.No;
                     button4.DialogResult = DialogResult.Cancel;
                     CancelButton = button4;
-                    button1.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button1;
-                    });
-                    button2.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button2;
-                    });
+                    button1.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button1);
+                    button2.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button2);
                     FormClosed += new FormClosedEventHandler((sender, e) => {
-                        if (DialogResult == DialogResult.No) {
+                        if (DialogResult.Equals(DialogResult.No)) {
                             clickedButton = ClickedButton.Button3;
-                        } else if (DialogResult == DialogResult.Cancel) {
+                        } else if (DialogResult.Equals(DialogResult.Cancel)) {
                             clickedButton = ClickedButton.Button4;
                         }
                     });
@@ -268,18 +489,10 @@ namespace MessageForm {
                     button3.DialogResult = DialogResult.No;
                     button4.DialogResult = DialogResult.No;
                     DisableCloseButton();
-                    button1.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button1;
-                    });
-                    button2.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button2;
-                    });
-                    button3.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button3;
-                    });
-                    button4.Click += new EventHandler((sender, e) => {
-                        clickedButton = ClickedButton.Button4;
-                    });
+                    button1.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button1);
+                    button2.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button2);
+                    button3.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button3);
+                    button4.Click += new EventHandler((sender, e) => clickedButton = ClickedButton.Button4);
                     break;
                 default:
                     MinimumSize = new Size(146, 136);
@@ -289,7 +502,7 @@ namespace MessageForm {
                     button4.Text = Properties.Resources.ButtonOK;
                     button4.DialogResult = DialogResult.OK;
                     button4.KeyDown += new KeyEventHandler((sender, e) => {
-                        if (e.KeyCode == Keys.Escape) {
+                        if (e.KeyCode.Equals(Keys.Escape)) {
                             Close();
                         }
                     });
@@ -377,15 +590,13 @@ namespace MessageForm {
             }
         }
 
-        public ClickedButton MessageBoxClickedButton {
-            get {
-                return clickedButton;
-            }
-        }
+        public ClickedButton MessageBoxClickedButton => clickedButton;
 
         private void OnFormLoad(object sender, EventArgs e) {
-            if (Location == Point.Empty && (parent == null || !parent.Visible)) {
-                Location = new Point((SystemInformation.PrimaryMonitorSize.Width - Width) / 2, (SystemInformation.PrimaryMonitorSize.Height - Height) / 2);
+            if (Location.IsEmpty && (parent == null || !parent.Visible)) {
+                Location = new Point(
+                    (SystemInformation.PrimaryMonitorSize.Width - Width) / 2,
+                    (SystemInformation.PrimaryMonitorSize.Height - Height) / 2);
             }
             List<Button> buttons = new List<Button>();
             foreach (Control control in Controls) {
@@ -403,7 +614,18 @@ namespace MessageForm {
 
         private void Copy(object sender, EventArgs e) {
             try {
-                Clipboard.SetText(((Label)((MenuItem)sender).GetContextMenu().SourceControl).Text);
+                string text = label.Text;
+                Thread thread = new Thread(new ThreadStart(() => {
+                    try {
+                        Clipboard.SetText(text);
+                    } catch (Exception exception) {
+                        Debug.WriteLine(exception);
+                        ErrorLog.WriteLine(exception);
+                    }
+                }));
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                thread.Join();
             } catch (Exception exception) {
                 Debug.WriteLine(exception);
                 ErrorLog.WriteLine(exception);
@@ -411,33 +633,58 @@ namespace MessageForm {
         }
 
         private void DisableCloseButton() {
-            EnableMenuItem(GetSystemMenu(Handle, false), SC_CLOSE, 1);
+            NativeMethods.EnableMenuItem(NativeMethods.GetSystemMenu(Handle, false), Constants.SC_CLOSE, 1);
         }
 
         private void EnableCloseButton() {
-            EnableMenuItem(GetSystemMenu(Handle, false), SC_CLOSE, 0);
+            NativeMethods.EnableMenuItem(NativeMethods.GetSystemMenu(Handle, false), Constants.SC_CLOSE, 0);
         }
 
         public enum BoxIcon {
-            None, Hand, Stop, Error, Question, Exclamation, Warning, Asterisk, Information, OK, Shield, ShieldError, ShieldQuestion, ShieldQuestionRed, ShieldWarning, ShieldOK, WinLogo, Application
+            None,
+            Hand,
+            Stop,
+            Error,
+            Question,
+            Exclamation,
+            Warning,
+            Asterisk,
+            Information,
+            OK,
+            Shield,
+            ShieldError,
+            ShieldQuestion,
+            ShieldQuestionRed,
+            ShieldWarning,
+            ShieldOK,
+            WinLogo,
+            Application
         }
 
         public enum Buttons {
-            OK, OKCancel, AbortRetryIgnore, YesNoCancel, YesNo, RetryCancel, YesAllNoCancel, DeleteAllSkipCancel, YesAllNoAll
+            OK,
+            OKCancel,
+            AbortRetryIgnore,
+            YesNoCancel,
+            YesNo,
+            RetryCancel,
+            YesAllNoCancel,
+            DeleteAllSkipCancel,
+            YesAllNoAll
         }
 
         public enum DefaultButton {
-            Button1, Button2, Button3, Button4
+            Button1,
+            Button2,
+            Button3,
+            Button4
         }
 
         public enum ClickedButton {
-            Button1, Button2, Button3, Button4
+            Button1,
+            Button2,
+            Button3,
+            Button4
         }
-
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
-
-        [DllImport("user32.dll")]
-        private static extern bool EnableMenuItem(IntPtr hMenu, uint itemId, uint uEnable);
     }
 }

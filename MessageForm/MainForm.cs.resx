@@ -137,10 +137,10 @@
     <value>Výchozí tlačítko</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 17</value>
+    <value>93, 17</value>
   </data>
   <data name="checkBox1.Text" xml:space="preserve">
-    <value>Střed &amp;obrazovky</value>
+    <value>Střed displ&amp;aye</value>
   </data>
   <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 17</value>

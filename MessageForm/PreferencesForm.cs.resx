@@ -158,10 +158,10 @@
     <value>Tisk</value>
   </data>
   <data name="checkBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 17</value>
+    <value>251, 17</value>
   </data>
   <data name="checkBox6.Text" xml:space="preserve">
-    <value>Umístit hlavní &amp;okno aplikace do středu obrazovky</value>
+    <value>Umístit hlavní &amp;okno aplikace do středu displaye</value>
   </data>
   <data name="checkBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 17</value>
