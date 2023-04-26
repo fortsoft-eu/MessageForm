@@ -337,7 +337,7 @@
     <value>Při kontrole aktualizací došlo k chybě. Prosím, zkuste to znovu později.</value>
   </data>
   <data name="MessageUpToDate" xml:space="preserve">
-    <value>Aplikace je aktuální</value>
+    <value>Aplikace je aktuální.</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>https://fortsoft.cz/</value>
