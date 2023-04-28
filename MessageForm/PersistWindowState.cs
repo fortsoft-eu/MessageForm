@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **
- * Version 2.3.2.2
+ * Version 2.3.3.0
  */
 
 using Microsoft.Win32;
@@ -328,11 +328,7 @@ namespace FortSoft.Tools {
                             ? windowState
                             : FormWindowState.Normal;
                     }
-                    Loaded?.Invoke(this, new PersistWindowStateEventArgs());
                 } else {
-                    if (AllowSaveTopMost) {
-                        topMost = parent.TopMost;
-                    }
                     if (parent.WindowState.Equals(FormWindowState.Normal)) {
                         nLocation = parent.Location;
                     }
@@ -344,6 +340,7 @@ namespace FortSoft.Tools {
                         }
                     }
                 }
+                Loaded?.Invoke(this, new PersistWindowStateEventArgs());
             }
 
             if (SavingOptions.Equals(PersistWindowStateSavingOptions.Registry) && !string.IsNullOrEmpty(RegistryPath)) {
@@ -406,8 +403,8 @@ namespace FortSoft.Tools {
                             parent.TopMost = topMost;
                         }
                     }
-                    Loaded?.Invoke(this, new PersistWindowStateEventArgs(registryKey));
                 }
+                Loaded?.Invoke(this, new PersistWindowStateEventArgs(registryKey));
             }
 
             if (FixWidth && FixHeight) {
@@ -470,6 +467,13 @@ namespace FortSoft.Tools {
         /// Saves the state of the parent form into the Windows registry.
         /// </summary>
         public void Save() {
+            if (SavingOptions.Equals(PersistWindowStateSavingOptions.None) || string.IsNullOrEmpty(RegistryPath)) {
+                if (AllowSaveTopMost) {
+                    topMost = parent.TopMost;
+                }
+                Saved?.Invoke(this, new PersistWindowStateEventArgs());
+            }
+
             if (SavingOptions.Equals(PersistWindowStateSavingOptions.Registry) && !string.IsNullOrEmpty(RegistryPath)) {
                 RegistryKey registryKey = null;
                 try {
@@ -502,10 +506,13 @@ namespace FortSoft.Tools {
                 if (!DisableSaveWindowState && parent.ControlBox && (parent.MinimizeBox || parent.MaximizeBox)
                         || AllowSaveTopMost) {
 
+                    if (AllowSaveTopMost) {
+                        topMost = parent.TopMost;
+                    }
                     if (AllowSaveMinimized || !parent.WindowState.Equals(FormWindowState.Minimized)) {
-                        registryKey.SetValue(parent.Name + State, WindowStateToInt(parent.WindowState, parent.TopMost));
+                        registryKey.SetValue(parent.Name + State, WindowStateToInt(parent.WindowState, topMost));
                     } else {
-                        registryKey.SetValue(parent.Name + State, WindowStateToInt(windowState, parent.TopMost));
+                        registryKey.SetValue(parent.Name + State, WindowStateToInt(windowState, topMost));
                     }
                 }
                 Saved?.Invoke(this, new PersistWindowStateEventArgs(registryKey));

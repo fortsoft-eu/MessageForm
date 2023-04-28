@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **
- * Version 1.1.0.0
+ * Version 1.1.1.0
  */
 
 using FortSoft.Tools;
@@ -140,7 +140,9 @@ namespace MessageForm {
 
         private void OnWindowStateLoaded(object sender, PersistWindowStateEventArgs e) {
             try {
-                richTextBox.WordWrap = Convert.ToBoolean((int)e.RegistryKey.GetValue(Name + Constants.WordWrap, 1));
+                if (e.RegistryKey != null) {
+                    richTextBox.WordWrap = Convert.ToBoolean((int)e.RegistryKey.GetValue(Name + Constants.WordWrap, 1));
+                }
             } catch (Exception exception) {
                 Debug.WriteLine(exception);
                 ErrorLog.WriteLine(exception);
@@ -152,7 +154,9 @@ namespace MessageForm {
 
         private void OnWindowStateSaved(object sender, PersistWindowStateEventArgs e) {
             try {
-                e.RegistryKey.SetValue(Name + Constants.WordWrap, richTextBox.WordWrap ? 1 : 0);
+                if (e.RegistryKey != null) {
+                    e.RegistryKey.SetValue(Name + Constants.WordWrap, richTextBox.WordWrap ? 1 : 0);
+                }
             } catch (Exception exception) {
                 Debug.WriteLine(exception);
                 ErrorLog.WriteLine(exception);
