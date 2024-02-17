@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **
- * Version 1.1.0.0
+ * Version 1.1.1.1
  */
 
 using FortSoft.Tools;
@@ -794,12 +794,7 @@ namespace MessageForm {
             location = e.Location;
             if (textBoxClicks.Equals(3)) {
                 textBoxClicks = 0;
-                NativeMethods.MouseEvent(
-                    Constants.MOUSEEVENTF_LEFTUP,
-                    Convert.ToUInt32(Cursor.Position.X),
-                    Convert.ToUInt32(Cursor.Position.Y),
-                    0,
-                    0);
+                NativeMethods.MouseEvent(Constants.MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
                 Application.DoEvents();
                 if (textBox.Multiline) {
                     char[] chars = textBox.Text.ToCharArray();

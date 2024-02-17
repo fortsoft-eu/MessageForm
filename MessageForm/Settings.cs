@@ -87,8 +87,9 @@ namespace MessageForm {
         public bool MainFormCenterScreen { get; set; }
 
         /// <summary>
-        /// An example of software application setting that will be stored in the
-        /// Windows registry.
+        /// Represents the printing setting, whether to use soft margins (larger)
+        /// or hard margins (smaller). This setting does not apply to the
+        /// embedded Chromium browser. The default value is true.
         /// </summary>
         public bool PrintSoftMargins { get; set; } = true;
 
@@ -142,10 +143,9 @@ namespace MessageForm {
         public int EscapeFunction { get; set; } = 1;
 
         /// <summary>
-        /// An example of software application setting that will be stored in the
-        /// Windows registry.
+        /// Last export extension index used. The default value is four.
         /// </summary>
-        public int ExtensionFilterIndex { get; set; }
+        public int ExtensionFilterIndex { get; set; } = 4;
 
         /// <summary>
         /// An example of software application setting that will be stored in the
@@ -166,8 +166,7 @@ namespace MessageForm {
         public string Caption { get; set; } = Properties.Resources.DummyCaption;
 
         /// <summary>
-        /// An example of software application setting that will be stored in the
-        /// Windows registry.
+        /// Last export directory path used. The default value is null.
         /// </summary>
         public string LastExportDirectory { get; set; }
 

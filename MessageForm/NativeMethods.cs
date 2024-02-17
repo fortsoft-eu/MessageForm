@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  **
- * Version 1.1.0.0
+ * Version 1.1.1.1
  */
 
 using System;
@@ -39,7 +39,7 @@ namespace MessageForm {
 
 
         [DllImport("user32.dll", EntryPoint = "mouse_event", SetLastError = true)]
-        internal static extern void MouseEvent(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+        internal static extern void MouseEvent(uint dwFlags, int dx, int dy, uint cButtons, uint dwExtraInfo);
 
 
         [DllImport("user32.dll")]
